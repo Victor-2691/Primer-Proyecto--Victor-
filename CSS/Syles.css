@@ -1,0 +1,387 @@
+/*Esto es para reiniciar el tama;o por defecto del documento HTML a 62.5% para manejar mejor los rem*/
+
+/*Seudoselectores son etiquetas que no existen en el HTML*/
+/*Con el root definimos variables para utlizarlas en las propiedades*/
+:root {
+  --blanco: #ffffff;
+  --Negro: #212121;
+  --Primario: #ffc107;
+  --Secundario: #0091a7;
+  --Gris: #757575;
+  --GrisClaro: #dfe9f3;
+  --Fuente-Principal: 3.8rem;
+}
+
+/*Globales*/
+
+html {
+  font-size: 62.5%;
+  /*Sirve para mantener el tama;o de los elementos */
+  box-sizing: border-box;
+  /*Esta funcion es para hacer scroll de arriba abajo si quieres de derecha a izquiera eje Y*/
+  scroll-snap-type: y mandatory;
+}
+
+
+.Servicios,
+.Navegacion-Principal,
+.formulario {
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+
+}
+
+/*El * sirve para seleccionar todos los elementos*/
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/*Esto ayuda a los rem
+1 rem = 10px
+3.8 rem = 38px
+*/
+body {
+  font-size: 1rem;
+  font-family: "Krub", sans-serif;
+  /*Para hacer un degradado usamos la propiedad de image aunque no usemos la imagen como tal*/
+  /*Le inidicamos en que direccion queremos el degradado en nuestro caso de abajo hacia arriba*/
+  background-image: linear-gradient(
+    to top,
+    VAR(--GrisClaro) 0%,
+    VAR(--blanco) 100%
+  );
+}
+
+.contenedor {
+  max-width: 100rem;
+  /*margin-top: 0px;
+     margin-right: auto;
+     margin-bottom: 0px;
+     margin-left: auto ;*/
+  /*Margin toma los 4 valores
+        en este orde arriba, derecha, abajo, izquierda*/
+  margin: 0 auto 0 auto;
+  /*margin: 0 auto; simplificado*/
+}
+
+.boton {
+  background-color: var(--Secundario);
+  color: var(--blanco);
+  padding: 1rem 3rem 1rem 3rem;
+  margin-top: 3rem;
+  font-size: 2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  width: 90%;
+  text-align: center;
+  border: none;
+}
+
+.boton:hover {
+  cursor: pointer;
+}
+
+
+.sombra {
+  -webkit-box-shadow: 0px 5px 17px 16px rgba(112, 112, 112, 0.46);
+  -moz-box-shadow: 0px 5px 17px 16px rgba(112, 112, 112, 0.46);
+  box-shadow: 0px 5px 17px 16px rgba(112, 112, 112, 0.46);
+  background-color: var(--blanco);
+  padding: 2rem;
+  /*Esquinas redondeadas*/
+  border-radius: 1rem;
+}
+
+/*Tipografia*/
+h1 {
+  font-size: 3.8rem;
+}
+
+h2 {
+  font-size: 2.8rem;
+}
+
+h3 {
+  font-size: 1.8;
+}
+
+h1,
+h2,
+h3 {
+  text-align: center;
+}
+
+/*Titulos*/
+.titulo span {
+  font-size: 2rem;
+}
+
+/*Navegacion Principal*/
+
+.Navegacion-Principal {
+  display: flex;
+  flex-direction: column;
+  /*Para usar Flex hay que ir al padre del elemento que queremos
+  cambiar para las etiquetas a el padre es navegacion*/
+  /*Cuando solo lo pones una vez
+significa que es el mismo valor para todas 
+las direcciones
+Flexbox tiene 2 ejes fila (row) y columna (column)
+row es aplicado por defecto al definir un display flex
+*/
+}
+
+.Navegacion-Principal a {
+  color: var(--blanco);
+  /*Por defecto los enlaces estan
+  subrayados pero los podemos eliminar*/
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 1rem;
+  display: block;
+  text-align: center;
+}
+
+.Navegacion-Principal a:hover {
+  background-color: var(--Primario);
+  color: var(--Negro);
+}
+
+/*Utilidades*/
+
+.w-10{
+  width: 100%;
+}
+
+.alinear-derecha{
+  justify-content: flex-end;
+
+}
+
+.flex{
+  display: flex;
+
+}
+
+
+.nav-backgroup {
+  background-color: var(--Secundario);
+}
+
+/*Media Query*/
+
+/*Telefonos*/
+@media (min-width: 480px) {
+
+}
+
+/*Tablet*/
+@media (min-width: 768px) {
+  .Navegacion-Principal {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .boton {
+    width: auto;
+  }
+
+  .Servicios{
+    display: grid;
+    /*Nos podemos mover en todas direcciones
+    Defino dos columnas de 300px cada una el 100 entre 3
+    1fr es el equivalente */
+    grid-template-columns: 33.3% 33.3% 33.3%;
+    column-gap: 1rem;/*Para dar espacio entre las columnas*/ 
+  }
+  .w-10{
+    width: 100%;
+  }
+
+  
+.Contenedor-Campos{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  column-gap: 1rem;
+  grid-template-rows: auto auto 20rem;
+}
+
+.campo:nth-child(3),
+.campo:nth-child(4){
+  grid-column:  1 / 3;
+}
+
+   
+}
+
+/*Lantop*/
+@media (min-width: 1140px) {
+}
+
+/*Pantalla mas grande*/
+@media (min-width: 1440px) {
+}
+
+/*Hero Contenido de seccion*/
+
+.hero {
+  background-image: url(../Img/4525-Herramientas-digitales-para-el-diseño-gráfico.jpg);
+  /*Para que las imagenes no se reptiran*/
+  background-repeat: no-repeat;
+  /*Para que la imagen use todo el espacio que tenga disponible*/
+  background-size: cover;
+  height: 400px;
+  position: relative;
+  /*El padre siempre debe tener posicion relativa y el hijo absoluta
+  Esto para que cuando ajustemos la posicion del hijo se base en el del padre*/
+  margin-bottom: 2rem;
+}
+
+.contenido-hero {
+  position: absolute;
+  /*Como hacer para que tome todo el espacio disponible respecto al padre*/
+  /*Forma 1
+  bottom: 0;
+   left: 0;
+   top: 0;
+   right: 0;
+   */
+  /*Forma 2*/
+  width: 100%;
+  height: 100%;
+  /*Para la transparencia se pueden usar varias formas una de ellas es RGB mas el elemto
+   de transparencia donde 0 es totalmente transparente y 1 es sin transparencia*/
+  background-color: rgb(0, 0, 0, 0.6);
+  /*Hay una nueva forma de definir la transparencia
+      background-color: rgb(0 0 0 / 6%) */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.contenido-hero h2,
+.contenido-hero p {
+  color: var(--blanco);
+}
+
+/*Servicios*/
+
+
+
+.Servicio{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Servicio h3{
+color: var(--Secundario);
+font-weight: normal;
+}
+
+.Servicio p {
+  line-height: 2;
+  text-align: center;
+}
+
+.Servicio .Iconos{
+  height: 15rem;
+  width: 15rem;
+  background-color: var(--Primario);
+  border-radius: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/*Contacto*/
+.formulario{
+  background-color: var(--Gris);
+  width: min( 60rem, 100%); /*Utulizar el valor mas pequeno*/
+  margin: 0 auto; /*Siempre que tenga un formulario y que el padre no tenga display flex*/
+  padding: 2rem;
+  border-radius: 1rem;
+}
+.formulario fieldset {
+  border: none;
+}
+
+.formulario legend {
+ text-align: center;
+ font-size: 1.8rem;
+ text-transform: uppercase;
+ font-weight: 700;
+ margin-bottom: 2rem;
+ color: var(--Primario);
+
+}
+
+
+.campo{
+  margin-bottom: 1rem;
+}
+
+.campo label {
+color: var(--blanco);
+font-weight: bold;
+margin-bottom: .5rem;
+display: block;
+}
+
+.campo textarea{
+  height: 20rem;
+}
+
+.input-text{
+width: 100%;
+border: none;
+padding: 1.5rem;
+border-radius: .5rem;
+}
+
+/**Footer*/
+.footer{
+  text-align: center;
+}
+
+
+/*Comentarios*/
+/*El margen tiene 4 valores arriba - abajo - derecha - izquierda*/
+/*Inicialmente para el tamano se usaban los pixeles pero al tener tanta variedad
+de pantallas actualmente como relojes, tablets dejo de ser funcional
+luego se uso la medida de em pero era bastante confuso
+Luego salieron los rem que su tama;o es acorde al documento es relativo al documento*/
+
+/*Se le puede poner H1 y span para que aplique en elementos anidados osea 
+los span dentro de los H1*/
+
+/*Tambien existen los selectores de clases inician con un punto
+.cliente {
+}
+
+Tambien por ID que es unico por pagina inician con #
+#cliente{
+}
+
+Selector de atributo, selecciona elementos basado en algun atributo
+[src="logo.jpg"] {
+}
+
+Tambien se pueden combinar descendentes
+selecciona los hijos de la clase cliente cuyo nombre sea .nombre
+.cliente .nombre {
+    color:blue
+}
+
+Todos los hijos cliente que sean parrafos
+.cliente > p{
+
+}
+
+*/
